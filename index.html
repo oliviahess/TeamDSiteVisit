@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Team D Consultants — So you want to expand into Spain</title>
+<style>
+  :root{
+    --bg:#000000;
+    --panel:#0b0e13;
+    --panel-2:#11161d;
+    --line:#1f2a37;
+    --line-soft:#161d26;
+    --accent:#4da3ff;
+    --accent-dim:#1d4e80;
+    --text:#e9eef5;
+    --muted:#9db0c5;
+    --warn:#ffd166;
+    --good:#5ddc9a;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+
+  /* ---------- header ---------- */
+  header.masthead{
+    border-bottom:3px solid var(--accent);
+    padding:64px 0 40px;
+    background:radial-gradient(1200px 400px at 15% -10%, rgba(77,163,255,.18), transparent 70%);
+  }
+  .brandmark{
+    display:inline-block;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--accent);border:1px solid var(--accent-dim);border-radius:999px;
+    padding:5px 14px;margin-bottom:22px;
+  }
+  h1{
+    font-size:clamp(2.6rem,7vw,5rem);line-height:.98;margin:0;letter-spacing:-.03em;font-weight:800;
+  }
+  h1 .blue{color:var(--accent)}
+  .subhead{
+    font-size:clamp(1.15rem,2.6vw,1.9rem);margin:16px 0 0;color:var(--muted);font-weight:400;letter-spacing:-.01em;
+  }
+  .meta-line{margin-top:26px;color:#6f8299;font-size:.85rem;max-width:760px}
+
+  /* ---------- team ---------- */
+  .team-band{padding:38px 0 34px;border-bottom:1px solid var(--line-soft)}
+  .team-label{
+    font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);
+    font-weight:700;margin:0 0 22px;
+  }
+  .team{display:flex;flex-wrap:wrap;gap:34px}
+  .member{width:132px;text-align:center}
+  .member img{
+    width:120px;height:120px;border-radius:50%;object-fit:cover;object-position:center top;
+    display:block;margin:0 auto 12px;border:2px solid var(--accent-dim);
+    background:var(--panel-2);
+  }
+  .member .nm{display:block;font-weight:700;font-size:.97rem;letter-spacing:-.01em}
+  @media (max-width:520px){
+    .team{gap:22px;justify-content:center}
+    .member{width:108px}
+    .member img{width:98px;height:98px}
+  }
+
+  /* ---------- thanks ---------- */
+  .thanks{text-align:center}
+  .thanks blockquote{
+    margin:0 auto 34px;max-width:860px;font-size:clamp(1.15rem,2.6vw,1.65rem);
+    line-height:1.45;letter-spacing:-.015em;color:#fff;font-weight:600;
+  }
+  .thanks blockquote .blue{color:var(--accent)}
+  .thanks figure{margin:0}
+  .thanks img{
+    width:100%;height:auto;display:block;border-radius:14px;border:1px solid var(--accent-dim);
+  }
+  .thanks figcaption{margin-top:14px;color:#6f8299;font-size:.84rem}
+
+  /* ---------- section shells ---------- */
+  section{padding:58px 0;border-bottom:1px solid var(--line-soft)}
+  .eyebrow{
+    font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);
+    margin:0 0 10px;font-weight:700;
+  }
+  h2{font-size:clamp(1.7rem,3.6vw,2.6rem);margin:0 0 8px;letter-spacing:-.02em;font-weight:800}
+  h2 .blue{color:var(--accent)}
+  .lede{color:var(--muted);max-width:820px;margin:0 0 30px;font-size:1.02rem}
+  h3{font-size:1.18rem;margin:30px 0 10px;letter-spacing:-.01em}
+  h4{font-size:.95rem;margin:22px 0 6px;color:var(--accent);letter-spacing:.01em}
+
+  /* ---------- wizard ---------- */
+  .wizard{
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:30px;
+  }
+  .progress{display:flex;gap:8px;margin-bottom:26px;flex-wrap:wrap}
+  .pip{
+    font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#5f7288;
+    border:1px solid var(--line);border-radius:999px;padding:4px 12px;white-space:nowrap;
+  }
+  .pip.done{color:var(--accent);border-color:var(--accent-dim);background:rgba(77,163,255,.08)}
+  .pip.now{color:#fff;border-color:var(--accent);background:var(--accent-dim)}
+  .qtext{font-size:1.5rem;font-weight:700;letter-spacing:-.02em;margin:0 0 6px}
+  .qhint{color:var(--muted);margin:0 0 22px;font-size:.95rem}
+  .opts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+  .opt{
+    text-align:left;cursor:pointer;background:var(--panel-2);color:var(--text);
+    border:1px solid var(--line);border-radius:12px;padding:18px 18px;font:inherit;
+    transition:border-color .15s,background .15s,transform .1s;
+  }
+  .opt:hover{border-color:var(--accent);background:#16202b;transform:translateY(-1px)}
+  .opt:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .opt .num{
+    display:inline-block;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:8px;
+  }
+  .opt .lab{display:block;font-weight:700;font-size:1.05rem;margin-bottom:4px}
+  .opt .sub{display:block;color:var(--muted);font-size:.87rem;line-height:1.45}
+  .wizard-foot{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .btn{
+    cursor:pointer;font:inherit;font-size:.88rem;border-radius:9px;padding:9px 16px;
+    background:transparent;color:var(--muted);border:1px solid var(--line);transition:.15s;
+  }
+  .btn:hover{color:#fff;border-color:var(--accent)}
+  .btn.primary{background:var(--accent);color:#04121f;border-color:var(--accent);font-weight:700}
+  .btn.primary:hover{background:#7bbcff}
+
+  /* ---------- brief card ---------- */
+  .brief{
+    background:linear-gradient(180deg,rgba(77,163,255,.14),rgba(77,163,255,.03));
+    border:1px solid var(--accent-dim);border-radius:14px;padding:26px 26px 22px;margin-bottom:28px;
+  }
+  .brief h3{margin:0 0 4px;font-size:1.45rem;letter-spacing:-.02em}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 20px}
+  .chip{
+    font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:#cfe4ff;
+    background:rgba(77,163,255,.14);border:1px solid var(--accent-dim);border-radius:999px;padding:4px 12px;
+  }
+  .brief ul{margin:0;padding-left:20px}
+  .brief li{margin-bottom:9px}
+  .brief li strong{color:#fff}
+
+  /* ---------- tabs ---------- */
+  .tabbar{
+    display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid var(--line);
+    margin-bottom:0;padding-bottom:0;-webkit-overflow-scrolling:touch;
+  }
+  .tab{
+    cursor:pointer;font:inherit;font-size:.9rem;font-weight:600;white-space:nowrap;
+    background:transparent;color:var(--muted);border:0;border-bottom:3px solid transparent;
+    padding:13px 17px;transition:.15s;
+  }
+  .tab:hover{color:#fff}
+  .tab[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
+  .tab:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
+  .panel{display:none;padding:30px 0 4px;animation:fade .2s ease}
+  .panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+  /* ---------- content bits ---------- */
+  .grid2{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+  .card h4{margin-top:0}
+  .card p:last-child,.card ul:last-child{margin-bottom:0}
+  ul.tight{padding-left:20px;margin:8px 0}
+  ul.tight li{margin-bottom:7px}
+  .k{color:#fff;font-weight:700}
+  .es{color:var(--accent);font-style:italic}
+  .flag{
+    border-left:3px solid var(--warn);background:rgba(255,209,102,.07);
+    padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:.94rem;
+  }
+  .flag b{color:var(--warn)}
+  .tip{
+    border-left:3px solid var(--good);background:rgba(93,220,154,.06);
+    padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:.94rem;
+  }
+  .tip b{color:var(--good)}
+  .cond{
+    border-left:3px solid var(--accent);background:rgba(77,163,255,.07);
+    padding:14px 18px;border-radius:0 8px 8px 0;margin:18px 0;
+  }
+  .cond .tag{
+    display:inline-block;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:7px;font-weight:700;
+  }
+  .cond p:last-child,.cond ul:last-child{margin-bottom:0}
+
+  /* ---------- tables ---------- */
+  .tablewrap{overflow-x:auto;border:1px solid var(--accent-dim);border-radius:10px;margin-top:22px}
+  table{border-collapse:collapse;width:100%;min-width:720px;font-size:.93rem}
+  thead th{
+    background:var(--accent);color:#04121f;text-align:left;padding:14px 18px;
+    font-weight:800;letter-spacing:.01em;vertical-align:middle;
+  }
+  tbody td{border-top:1px solid var(--accent-dim);padding:16px 18px;vertical-align:top}
+  tbody tr:nth-child(even){background:rgba(77,163,255,.035)}
+  td.rowhead{color:var(--accent);font-weight:800;width:15%;min-width:130px}
+  td.quote{width:38%;min-width:280px}
+  td.quote q{font-style:italic;color:#fff;quotes:"\201C" "\201D"}
+  td.quote .src{display:block;margin-top:10px;font-size:.8rem}
+  a{color:var(--accent)}
+  a:hover{color:#8cc4ff}
+  .src a{word-break:break-word}
+  table ul{margin:0;padding-left:18px}
+  table li{margin-bottom:7px}
+  table li:last-child{margin-bottom:0}
+
+  /* ---------- footer ---------- */
+  footer{padding:46px 0 70px;color:#6f8299;font-size:.86rem}
+  footer h4{color:var(--muted)}
+  footer ol{padding-left:20px;margin:8px 0 0}
+  footer li{margin-bottom:6px}
+  .disclaim{
+    border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-top:28px;
+    background:var(--panel);
+  }
+  .hide{display:none !important}
+  @media print{
+    body{background:#fff;color:#000}
+    .wizard,.tabbar,.btn{display:none}
+    .panel{display:block !important}
+    section{border-color:#ccc}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <span class="brandmark">Market Entry Advisory</span>
+    <h1>Team D <span class="blue">Consultants</span></h1>
+    <p class="subhead">So, you want to expand into Spain?</p>
+    <p class="meta-line">Use our interactive tool, where we will put together the
+      legal, tax, real estate, currency and operating guidance that applies to your firm. Alternatively, skip straight to the
+      full reference library below! Keep scrolling to see more about what it means to open up shop in Spain. </p>
+  </div>
+</header>
+
+<!-- ============================= TEAM ============================= -->
+<div class="team-band">
+  <div class="wrap">
+    <p class="team-label">Your consultants</p>
+    <div class="team">
+      <figure class="member">
+        <img src="images/trevor-nelson.jpg" alt="Trevor Nelson" width="120" height="120">
+        <figcaption class="nm">Trevor Nelson</figcaption>
+      </figure>
+      <figure class="member">
+        <img src="images/jamie-ma.jpg" alt="Jamie Ma" width="120" height="120">
+        <figcaption class="nm">Jamie Ma</figcaption>
+      </figure>
+      <figure class="member">
+        <img src="images/olivia-hess.jpg" alt="Olivia Hess" width="120" height="120">
+        <figcaption class="nm">Olivia Hess</figcaption>
+      </figure>
+      <figure class="member">
+        <img src="images/natalie-elam.jpg" alt="Natalie Elam" width="120" height="120">
+        <figcaption class="nm">Natalie Elam</figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
+
+<!-- ============================= WIZARD ============================= -->
+<section id="start">
+  <div class="wrap">
+    <p class="eyebrow">Step 1 — Choose your path</p>
+    <h2>What are you <span class="blue">building</span>?</h2>
+    <p class="lede">Whether you are opening a plant or an office, the company you incorporate might look
+      the same. But the permits, the timeline and the red tape could be completely different!</p>
+
+    <div class="wizard" id="wizard">
+      <div class="progress" id="progress"></div>
+      <h3 class="qtext" id="qtext">Are you opening a plant or an office?</h3>
+      <p class="qhint" id="qhint">Pick the closer match. You can restart at any time!</p>
+      <div class="opts" id="opts"></div>
+      <div class="wizard-foot">
+        <button class="btn" id="backBtn" type="button">← Back</button>
+        <button class="btn" id="resetBtn" type="button">Start over</button>
+        <button class="btn" id="skipBtn" type="button">Skip the questions — show me everything</button>
+      </div>
+    </div>
+
+    <noscript>
+      <div class="flag" style="margin-top:22px">
+        <b>JavaScript is off.</b> The guided path needs it, but every section below is plain HTML — scroll down and use
+        the tabbed reference library, which contains all of the same material.
+      </div>
+    </noscript>
+  </div>
+</section>
+
+<!-- ============================= RESULTS ============================= -->
+<section id="results">
+  <div class="wrap">
+    <p class="eyebrow">Step 2 — Your brief</p>
+    <h2>The <span class="blue">reference library</span></h2>
+    <p class="lede">Here's a summary of all the considerations you should take into account. Blue boxes are the pieces that change based on what you told us
+      in the configurator above!</p>
+
+    <div class="brief" id="brief">
+      <h3 id="briefTitle">No unique path selected - configure above, or look through all the data available to you below. </h3>
+      <div class="chips" id="briefChips"></div>
+      <ul id="briefList">
+        <li></li>
+      </ul>
+    </div>
+
+    <div class="tabbar" role="tablist" aria-label="Spain entry reference">
+      <button class="tab" role="tab" id="tab-legal"   aria-controls="p-legal"   aria-selected="true">Legal &amp; Entity</button>
+      <button class="tab" role="tab" id="tab-docs"    aria-controls="p-docs"    aria-selected="false">Documents &amp; Filings</button>
+      <button class="tab" role="tab" id="tab-tax"     aria-controls="p-tax"     aria-selected="false">Tax &amp; Payroll</button>
+      <button class="tab" role="tab" id="tab-re"      aria-controls="p-re"      aria-selected="false">Real Estate</button>
+      <button class="tab" role="tab" id="tab-money"   aria-controls="p-money"   aria-selected="false">Currency &amp; Transactions</button>
+      <button class="tab" role="tab" id="tab-people"  aria-controls="p-people"  aria-selected="false">People &amp; Local Practice</button>
+    </div>
+
+    <!-- ---------- TAB 1: LEGAL ---------- -->
+    <div class="panel active" id="p-legal" role="tabpanel" aria-labelledby="tab-legal">
+      <h3>What a foreign national is permitted to establish</h3>
+      <p>Spain's foreign investment regime is <span class="k">liberalized</span>. A U.S. person or company may own
+        100% of a Spanish company, sit on its board, and act as sole director. There is no local-partner requirement
+        and no local-director requirement. What you owe the state is a <em>declaration</em>, not permission — with one
+        significant exception, noted in the screening flag below.</p>
+
+      <div class="grid2">
+        <div class="card">
+          <h4>S.L. — <span class="es">Sociedad de Responsabilidad Limitada</span></h4>
+          <p>The private limited company, and the default answer for roughly 95% of U.S. entrants. Limited liability,
+            ownership in <em>participaciones</em> (not freely tradable shares), one or more shareholders, flexible
+            governance.</p>
+          <ul class="tight">
+            <li><span class="k">Minimum capital: €1</span> since the 2022 <em>Crea y Crece</em> reform. But below
+              €3,000 you must route 20% of annual profit to a reserve until capital plus reserve reaches €3,000, and
+              shareholders are jointly liable for the shortfall on liquidation. <b>Fund it at €3,000+ anyway</b> —
+              banks, landlords and customers read a €1 company as a shell.</li>
+            <li>Sole-shareholder form (<em>S.L.U.</em>) is standard for a wholly owned U.S. subsidiary; it simply must
+              be flagged in the registry and on invoices.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h4>S.A. — <span class="es">Sociedad Anónima</span></h4>
+          <p>The public limited company. <span class="k">€60,000 minimum capital, 25% paid in</span> at incorporation.
+            Freely transferable shares, mandatory independent valuation of non-cash contributions, heavier formalities.</p>
+          <p>Choose it only if you plan to bring in Spanish co-investors, need share classes for an eventual listing,
+            or operate in a sector that requires it (banking, insurance, some concessions). Otherwise it is cost
+            without benefit.</p>
+        </div>
+
+        <div class="card">
+          <h4>Branch — <span class="es">Sucursal</span></h4>
+          <p>A registered extension of the U.S. parent. <span class="k">No separate legal personality: the parent is
+            directly liable</span> for everything the branch does, and the parent's own accounts must be filed with the
+            Spanish registry and become public.</p>
+          <p>Taxed on Spanish-source income at the same 25% rate as a subsidiary, so the old tax argument for branches
+            has largely evaporated. Still used by banks, insurers and construction firms bidding single large projects.</p>
+        </div>
+
+        <div class="card">
+          <h4>Representative office — <span class="es">Oficina de representación</span></h4>
+          <p>No legal personality, no capital, and critically <span class="k">no revenue-generating activity</span>:
+            market research, liaison and promotion only. The moment it negotiates or signs contracts it risks creating a
+            taxable permanent establishment retroactively.</p>
+          <p>Cheap for a 6–12 month scouting phase. It still needs a tax ID and must register any staff with Social
+            Security.</p>
+        </div>
+
+        <div class="card">
+          <h4>Joint venture and consortium structures</h4>
+          <p>Options range from a co-owned S.L. to the <em>U.T.E.</em> (<span class="es">Unión Temporal de
+            Empresas</span>) — a tax-transparent temporary consortium used heavily for public works and infrastructure
+            bids, and often the only practical route into Spanish public procurement — and the <em>A.I.E.</em> for
+            ongoing cooperation between firms.</p>
+        </div>
+
+        <div class="card">
+          <h4>What you would not normally use</h4>
+          <ul class="tight">
+            <li><em>Autónomo</em> (sole trader) — unlimited personal liability, individuals only.</li>
+            <li><em>Sociedad Civil</em> / <em>Comunidad de Bienes</em> — partnership forms with personal liability.</li>
+            <li><em>Cooperativa</em> — member-owned, regionally regulated, occasionally relevant in agri-food.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flag">
+        <b>FDI screening applies to you specifically because you are not European.</b> Under Article 7 bis of Law
+        19/2003, a non-EU/EFTA investor acquiring <b>10% or more</b> of a Spanish company in a strategic sector needs
+        <b>prior government authorization</b> — not a notification, an approval, with a statutory answer window of
+        three to six months. Strategic sectors include critical infrastructure (energy, transport, water, health,
+        communications), dual-use and defense technology, semiconductors, AI and robotics, aerospace, critical raw
+        materials, and media. The regime also catches very large deals regardless of sector. Greenfield builds are
+        generally outside it, acquisitions frequently are not. <b>Screen this in week one</b>, because it sits on the
+        critical path ahead of everything else in this brief.
+      </div>
+
+      <h3>The always-applicable legal layer</h3>
+      <ul class="tight">
+        <li><span class="k">Four levels of law, not two.</span> EU regulation, Spanish national law, the 17 Autonomous
+          Communities, and the municipality. A U.S. firm that thinks in "federal and state" will miss the two layers
+          that actually control its permits.</li>
+        <li><span class="k">Notarial and registry formalism.</span> Incorporation, capital changes, powers of attorney,
+          property transfers and most corporate acts require a public deed before a <em>notario</em> and entry in a
+          public registry. This is not optional paperwork; an unregistered act is often simply ineffective against
+          third parties.</li>
+        <li><span class="k">GDPR plus Spain's own LOPDGDD.</span> The Spanish DPA (AEPD) is among the most active
+          enforcers in Europe. Employee monitoring, CCTV, cookie banners and biometric time clocks all draw attention.</li>
+        <li><span class="k">Mandatory internal whistleblowing channel</span> (Law 2/2023) for any employer with 50+
+          workers, registered with the authorities and with a named system manager.</li>
+        <li><span class="k">Commercial agents are protected by statute.</span> Law 12/1992 gives a terminated agent a
+          goodwill indemnity of up to one year's average commission. It cannot be waived in advance, and Spanish courts
+          have extended similar reasoning to some exclusive distributors. U.S. firms routinely sign agency agreements
+          in Spain without pricing this in.</li>
+      </ul>
+
+      <div class="cond" data-when="office">
+        <span class="tag">Because you chose: Office</span>
+        <p>For an office the structural question is narrow: <b>S.L. subsidiary or branch?</b> Take the S.L. It ring-fences
+          U.S. parent liability, keeps the parent's financials out of the Spanish public registry, and is the structure
+          Spanish landlords, banks and enterprise customers expect to contract with.</p>
+      </div>
+      <div class="cond" data-when="sales">
+        <span class="tag">Because you chose: Sales &amp; commercial</span>
+        <p>Watch the <b>permanent establishment</b> line. Under the U.S.–Spain treaty, a Spanish employee who habitually
+          concludes contracts — or plays the principal role leading to their conclusion — creates a taxable PE for the
+          U.S. parent even with no incorporated entity. "We'll just hire two reps first" is how firms end up filing
+          Spanish corporate tax returns retroactively, with penalties. If they sell, incorporate.</p>
+      </div>
+      <div class="cond" data-when="rnd">
+        <span class="tag">Because you chose: R&amp;D / engineering</span>
+        <p>Put the <b>intellectual property ownership clause in writing</b> and in Spanish-law form. Spain's Patents Act
+          gives employee inventors a statutory claim to compensation for certain inventions unless the employment
+          contract clearly assigns invention rights and the role is defined as research. Also register the entity for the
+          R&amp;D tax credit regime from day one — see the Tax tab.</p>
+      </div>
+      <div class="cond" data-when="plant">
+        <span class="tag">Because you chose: Plant</span>
+        <p>Incorporate an <b>S.L.</b> and treat the corporate step as the easy part. Your binding constraints are
+          environmental authorization, the municipal activity and works licences, and the electricity grid connection —
+          all regional or local, all slower than incorporation, and all things you should open files on <em>before</em>
+          you sign anything on a site.</p>
+      </div>
+      <div class="cond" data-when="250plus">
+        <span class="tag">Because you chose: 250+ people</span>
+        <p>At this scale you are a large employer in Spanish terms. Expect a works council, sector collective bargaining
+          that binds you, a mandatory equality plan and pay register, and — if you ever restructure — a formal
+          <em>ERE</em> collective dismissal process with a statutory consultation period. Budget for a Spanish
+          employment counsel on retainer, not on call.</p>
+      </div>
+      <div class="cond" data-when="canary">
+        <span class="tag">Because you chose: Canary Islands</span>
+        <p>The Canaries sit <b>outside the EU VAT area and outside the EU customs territory for some purposes</b>. Local
+          indirect tax is <em>IGIC</em> (general rate 7%), not IVA, and goods moving to the mainland cross a tax
+          frontier. That is a feature if you are serving West Africa or the Americas and a complication if the mainland
+          is your market.</p>
+      </div>
+    </div>
+
+    <!-- ---------- TAB 2: DOCUMENTS ---------- -->
+    <div class="panel" id="p-docs" role="tabpanel" aria-labelledby="tab-docs">
+      <h3>Documents you must produce in the United States first</h3>
+      <p>Every one of these must be <span class="k">apostilled</span> under the Hague Convention (both countries are
+        parties, so no consular legalization is needed) and then translated by a <span class="k">sworn translator</span>
+        — <em>traductor jurado</em> — officially appointed by Spain's Ministry of Foreign Affairs. An ordinary certified
+        translation will be rejected. Allow three to four weeks for this bundle alone; it is the single most common
+        reason a Spanish incorporation slips.</p>
+      <ul class="tight">
+        <li>Certificate of good standing / incorporation for the U.S. parent</li>
+        <li>Articles of incorporation and bylaws</li>
+        <li>Board resolution authorizing the Spanish investment and the incorporation</li>
+        <li>Notarized <span class="es">poder notarial</span> — a power of attorney naming whoever will sign in Spain,
+          drafted in Spanish civil-law terms rather than a U.S.-style POA</li>
+        <li>Passport copies for all directors, authorized signatories and ultimate beneficial owners</li>
+        <li>Beneficial ownership chart tracing to natural persons holding 25%+ — banks and notaries will both ask</li>
+      </ul>
+
+      <h3>The incorporation sequence in Spain</h3>
+      <ol class="tight">
+        <li><span class="k">NIE and NIF.</span> Every foreign individual involved needs an <em>NIE</em> (foreigner
+          identity number); the U.S. parent entity needs a Spanish <em>NIF</em> (tax ID) via Form 036. Apply first — this
+          gates everything downstream and can take two to four weeks.</li>
+        <li><span class="k">Name clearance.</span> A <em>certificación negativa de denominación social</em> from the
+          Central Commercial Registry confirming your chosen name is free. Submit three to five candidate names.</li>
+        <li><span class="k">Bank account and capital deposit.</span> Open the account, wire the capital, obtain the
+          bank's <em>certificado de desembolso</em>. See the chicken-and-egg flag below.</li>
+        <li><span class="k">Deed of incorporation.</span> Sign the <em>escritura de constitución</em> with the bylaws
+          (<em>estatutos sociales</em>) before a notary, in person or by proxy under your apostilled POA.</li>
+        <li><span class="k">Provisional NIF</span> for the new company from the tax agency (AEAT).</li>
+        <li><span class="k">Commercial Registry filing.</span> Registration at the provincial <em>Registro Mercantil</em>
+          is what actually creates the company as a legal person. Typically one to three weeks.</li>
+        <li><span class="k">Tax registration.</span> Form 036 census declaration: activity codes, VAT status, the
+          business rates tax (<em>IAE</em>), and — if you will trade with other EU states — VIES/ROI registration.</li>
+        <li><span class="k">Social Security.</span> Obtain the employer contribution account code
+          (<em>Código de Cuenta de Cotización</em>) from the TGSS, and register each employee <b>before their first day</b>.
+          Registering late is a straightforward fine.</li>
+        <li><span class="k">Beneficial ownership</span> declaration to the central registry (RCTIR).</li>
+        <li><span class="k">Corporate books</span> legalized electronically at the registry: minute book, shareholder
+          register, and thereafter annual accounts filed within one month of approval.</li>
+        <li><span class="k">Occupational risk prevention.</span> Spanish law requires a risk-prevention arrangement —
+          almost always a contract with an external <em>servicio de prevención ajeno</em> — plus a written risk
+          assessment, before staff start work. U.S. firms consistently forget this one.</li>
+      </ol>
+
+      <div class="flag">
+        <b>The banking chicken-and-egg.</b> Historically you needed a company NIF to open an account, and a bank
+        certificate to incorporate the company. Two ways through: use the <em>Crea y Crece</em> route in which founders
+        declare the capital to the notary and accept joint liability for it, skipping the bank certificate entirely; or
+        open the account with a bank that has a dedicated foreign-investor desk. Either way, treat <b>account opening as
+        a six-to-ten-week workstream</b>, not a Tuesday errand. KYC on a U.S.-owned entity with a multi-tier ownership
+        chain is genuinely slow.
+      </div>
+
+      <div class="tip">
+        <b>Free help exists.</b> <em>ICEX–Invest in Spain</em> is the national investment promotion agency and provides
+        no-cost location, permitting and incentive support to inbound investors, as do the regional agencies —
+        ACCIÓ (Catalonia), IVACE (Valencia), SPRI (Basque Country), IDEA (Andalusia), Invest in Madrid. They are also
+        the fastest route to knowing which grants you qualify for before you commit to a site.
+      </div>
+
+      <h3>Post-incorporation, ongoing</h3>
+      <ul class="tight">
+        <li>Foreign investment declaration (<span class="k">Form D-1A</span>) to the Investment Registry within one
+          month of the investment</li>
+        <li>Quarterly and annual tax filings; annual accounts filed with the Commercial Registry</li>
+        <li>Monthly Social Security settlements via the <em>SILTRA</em> system</li>
+        <li>Daily working-time records retained four years (mandatory since 2019, for every employee)</li>
+        <li>Equality plan and pay register at 50+ employees; LGTBI protocol at 50+ employees</li>
+      </ul>
+
+      <div class="cond" data-when="plant">
+        <span class="tag">Because you chose: Plant</span>
+        <p>A parallel and longer permitting track runs beside all of the above:</p>
+        <ul class="tight">
+          <li><em>Licencia de obras</em> — municipal building permit</li>
+          <li><em>Licencia de actividad</em> / <em>licencia ambiental</em> — activity and environmental licence, issued
+            regionally or municipally depending on your classification</li>
+          <li><em>Autorización Ambiental Integrada</em> (integrated environmental permit) if your activity falls in the
+            IPPC annex — this is the long one, commonly <b>9 to 18 months</b></li>
+          <li>Environmental impact assessment where thresholds are met; water abstraction and discharge permits</li>
+          <li>Grid connection point (<em>punto de conexión</em>) from the distributor — request early, queues in
+            industrial zones are real</li>
+          <li>Soil status declaration under RD 9/2005 for potentially contaminating activities, plus a baseline soil
+            report you will badly want if you ever exit the site</li>
+          <li><em>EORI</em> number for customs, and consider Authorised Economic Operator status if you import at volume</li>
+        </ul>
+        <p><b>Plan 12–24 months from site selection to production</b>, with the environmental permit as the critical
+          path — not the company setup, which is a rounding error by comparison.</p>
+      </div>
+      <div class="cond" data-when="process">
+        <span class="tag">Because you chose: Food / agri / chemical processing</span>
+        <p>Add sector registration on top of the general permits: the <em>Registro General Sanitario de Empresas
+          Alimentarias</em> (RGSEAA) for food operations, a HACCP plan, regional health authority inspection and, for
+          chemicals, REACH and Seveso III obligations if you cross substance thresholds. Also budget for wastewater
+          pre-treatment — municipal discharge limits are strict and are the most common late-stage surprise in food
+          processing projects.</p>
+      </div>
+      <div class="cond" data-when="logistics">
+        <span class="tag">Because you chose: Warehouse / distribution</span>
+        <p>Lighter environmental burden, but check whether your municipality allows a <em>declaración responsable</em>
+          (self-certified opening declaration) instead of a full licence — many do for non-classified warehousing, which
+          can save six months. If you will run your own fleet you need a national transport operator licence
+          (<em>tarjeta de transporte</em>) with capacity and financial-standing requirements. Note also that Spanish law
+          since 2022 prohibits truck drivers from loading and unloading the goods they carry, which changes your dock
+          staffing model.</p>
+      </div>
+      <div class="cond" data-when="office">
+        <span class="tag">Because you chose: Office</span>
+        <p>A pure office is usually a <em>declaración responsable</em> in Madrid and Barcelona rather than a full
+          activity licence, and fit-out works below a threshold need only a minor-works communication. <b>Realistic
+          timeline: 6 to 10 weeks</b> from apostilled documents in hand to a trading entity with a bank account, with
+          the account and the NIEs as the long poles.</p>
+      </div>
+      <div class="cond" data-when="foral">
+        <span class="tag">Because you chose: Basque Country / Navarre</span>
+        <p>These territories have <b>their own tax administrations and their own corporate tax laws</b> under the
+          <em>Concierto Económico</em> and <em>Convenio Económico</em>. You file with the provincial <em>Hacienda Foral</em>
+          (Bizkaia, Gipuzkoa, Álava) or Navarre, not with the national AEAT. Forms, deadlines, incentive schemes and
+          rates all differ — and the foral R&amp;D credits are materially more generous than the national ones. Engage a
+          Basque or Navarrese adviser specifically; a Madrid firm will not be fluent in this.</p>
+      </div>
+    </div>
+
+    <!-- ---------- TAB 3: TAX ---------- -->
+    <div class="panel" id="p-tax" role="tabpanel" aria-labelledby="tab-tax">
+      <h3>Corporate income tax — <span class="es">Impuesto sobre Sociedades</span></h3>
+      <ul class="tight">
+        <li><span class="k">General rate 25%</span> on worldwide income for a Spanish-resident company.</li>
+        <li><span class="k">15% for newly created companies</span> in the first tax period with a positive base and the
+          following one. A genuine cash-flow benefit for a startup subsidiary.</li>
+        <li><span class="k">Reduced rates for smaller companies are phasing in</span> under Law 7/2024, stepping down
+          year by year for micro-enterprises (turnover under €1M) and small entities (under €10M) across 2025–2029.
+          Confirm the current-year figure with your adviser rather than relying on a number you read once.</li>
+        <li><span class="k">15% minimum effective tax</span> applies to groups with turnover of €20M+ or filing on a
+          consolidated basis, regardless of credits.</li>
+        <li>Tax year normally matches the calendar year; the return is due 25 days after the six months following year
+          end (so 25 July for a December close), with three advance payments in April, October and December.</li>
+      </ul>
+
+      <h3>VAT — <span class="es">IVA</span></h3>
+      <ul class="tight">
+        <li>Standard <span class="k">21%</span>; reduced 10% (hospitality, transport, some foods); super-reduced 4%
+          (staple foods, books, medicines). The Canary Islands use <em>IGIC</em> instead; Ceuta and Melilla use
+          <em>IPSI</em>.</li>
+        <li>Returns are quarterly (Form 303) for most, <span class="k">monthly</span> if turnover exceeds €6M or you opt
+          into the monthly refund register (REDEME), plus an annual summary.</li>
+        <li><span class="k">SII real-time reporting.</span> Monthly filers must transmit invoice records to the tax
+          agency within four days of issue. This is an ERP integration project, not an accounting task — scope it early.</li>
+        <li>Intra-EU supplies need a valid VIES registration. <b>Expect the first VIES application to be refused or
+          queried</b>; the tax agency vets foreign-controlled applicants hard and may demand evidence of real
+          establishment.</li>
+      </ul>
+
+      <h3>Withholding tax and the U.S.–Spain treaty</h3>
+      <p>Domestic withholding is 19% on dividends, interest and royalties paid abroad. The 2013 Protocol to the
+        U.S.–Spain income tax treaty, in force since late 2019, is unusually generous and is a real reason to hold the
+        Spanish entity directly from the U.S.:</p>
+      <ul class="tight">
+        <li><span class="k">Dividends: 0%</span> where the U.S. parent has held 80%+ for 12 months and meets the
+          limitation-on-benefits test; 5% at 10%+ ownership; 15% otherwise.</li>
+        <li><span class="k">Interest: 0%.</span> <span class="k">Royalties: 0%.</span></li>
+        <li>Capital gains on shares are generally taxable only in the seller's state, with a real-property exception.</li>
+      </ul>
+      <div class="flag">
+        <b>The treaty is not self-executing.</b> To get the reduced rate you need a current U.S. <b>Form 6166</b>
+        residency certificate and must satisfy the limitation-on-benefits article. Miss the paperwork and 19% is
+        withheld at source; reclaiming it takes months. Also run the U.S. side — GILTI, Subpart F, foreign tax credit
+        and Form 5471 — before you choose the holding structure, not after.
+      </div>
+
+      <h3>Payroll and employer cost</h3>
+      <ul class="tight">
+        <li><span class="k">Employer social security is roughly 30–32% of gross salary</span>, comprising common
+          contingencies (23.6%), unemployment, wage guarantee fund, vocational training, an occupational-accident rate
+          that varies by activity, and the intergenerational equity mechanism. Employees contribute around 6.5%.</li>
+        <li>Contributions are capped at a maximum monthly base (roughly €4,900 in 2025), so the marginal cost of senior
+          hires falls — though a new solidarity levy is phasing in above the cap.</li>
+        <li><span class="k">Salaries are typically quoted as an annual gross across 14 payments</span> — twelve monthly
+          plus two <em>pagas extras</em>, often in July and December. A U.S. offer letter quoting a monthly figure will
+          be read as one fourteenth of the year, not one twelfth. Get this right or your first offer will be
+          accidentally 17% low.</li>
+        <li>Personal income tax (IRPF) is withheld at progressive rates from roughly 19% to 47%+, with the top band
+          varying by Autonomous Community.</li>
+        <li><span class="k">The "Beckham Law"</span> inbound regime taxes qualifying relocated employees at a flat
+          <b>24% on Spanish employment income up to €600,000</b> for six years, and exempts most non-Spanish income. The
+          Startups Law widened it to remote workers and to the employee's spouse and children. It is the single most
+          effective lever for moving U.S. staff to Spain — and it must be elected within six months of registration.</li>
+      </ul>
+
+      <h3>Other taxes to price in</h3>
+      <ul class="tight">
+        <li><em>IBI</em> — annual municipal property tax on owned real estate</li>
+        <li><em>IAE</em> — business activity tax; exempt for the first two years and for turnover under €1M</li>
+        <li><em>ICIO</em> — municipal construction tax, up to about 4% of the works budget</li>
+        <li><em>ITP / AJD</em> — transfer tax on second-hand property (roughly 6–11%, set regionally) or stamp duty
+          (roughly 0.5–1.5%) on VAT-taxed purchases</li>
+        <li><em>Plusvalía municipal</em> — municipal tax on the increase in urban land value, payable on transfer</li>
+        <li>Plastic packaging tax — €0.45/kg on non-recycled plastic in non-reusable packaging</li>
+        <li>Transfer pricing documentation, plus Form 232 disclosing related-party transactions — assume every
+          intercompany charge from the U.S. parent will be examined</li>
+      </ul>
+
+      <h3>Incentives worth chasing</h3>
+      <ul class="tight">
+        <li><span class="k">R&amp;D and innovation credits are among the best in the OECD</span>: 25% of R&amp;D spend
+          (42% above a rolling average), 17% on dedicated researcher payroll, 12% on technological innovation — and they
+          can be <b>monetized for cash</b> if you have no tax to shelter, which matters enormously for a loss-making
+          first three years.</li>
+        <li>Patent box: up to a 60% reduction on qualifying IP income.</li>
+        <li>CDTI grants and soft loans for R&amp;D projects; ENISA participative loans; ICO credit lines.</li>
+        <li>Regional aid and the PERTE programs (electric vehicles, semiconductors, agri-food, renewable hydrogen)
+          funded through EU recovery money.</li>
+        <li>Social security rebates for hiring in certain regions and categories.</li>
+      </ul>
+
+      <div class="cond" data-when="foral">
+        <span class="tag">Because you chose: Basque Country / Navarre</span>
+        <p>Different corporate tax code entirely, with a headline rate near the national one but <b>notably richer
+          R&amp;D and investment credits</b> and its own filing calendar. For a research-intensive or capital-intensive
+          operation this can be the deciding factor between regions — model it properly rather than assuming Spanish
+          national rates.</p>
+      </div>
+      <div class="cond" data-when="canary">
+        <span class="tag">Because you chose: Canary Islands</span>
+        <p>The <em>Zona Especial Canaria</em> offers a <b>4% corporate tax rate</b> — the lowest in the EU — for
+          qualifying entities that meet minimum investment and local-hiring commitments within two years. Combine with
+          the <em>Reserva para Inversiones en Canarias</em> and IGIC at 7% instead of 21% IVA. The trade-off is distance
+          from mainland markets and a tax frontier on goods.</p>
+      </div>
+      <div class="cond" data-when="south">
+        <span class="tag">Because you chose: Andalusia / Extremadura</span>
+        <p>These are <b>assisted areas on Spain's EU regional aid map</b>, which permits higher-intensity capital grants
+          than Madrid or Catalonia can legally offer. Combined with lower wage levels and land costs, the effective
+          incentive package can be worth more than a headline tax rate difference. Open the conversation with the
+          regional agency before you shortlist sites — aid generally cannot be granted for a project already begun.</p>
+      </div>
+      <div class="cond" data-when="rnd">
+        <span class="tag">Because you chose: R&amp;D / engineering</span>
+        <p>Get a <b>binding <em>informe motivado</em></b> from the Ministry of Science certifying your projects as
+          qualifying R&amp;D. It is optional but it makes the credit effectively audit-proof, and it is what separates
+          firms that claim the credit confidently from firms that provision against it. Stack it with the researcher
+          payroll credit and the patent box.</p>
+      </div>
+      <div class="cond" data-when="plant">
+        <span class="tag">Because you chose: Plant</span>
+        <p>Three plant-specific items: <b>import VAT deferral</b> (available if you file monthly — otherwise you finance
+          21% of every import for a quarter), <b>free zones and customs warehousing</b> at Barcelona, Cádiz, Vigo,
+          Seville, Santander and the Canaries, and <b>CBAM</b>, the EU carbon border adjustment, which attaches
+          financial obligations to imports of steel, aluminium, cement, fertilizer, hydrogen and electricity. If your
+          inputs are on that list, CBAM is a line item in your landed cost model, not a compliance footnote.</p>
+      </div>
+      <div class="cond" data-when="shared">
+        <span class="tag">Because you chose: Shared services / back office</span>
+        <p>A captive service center charging the U.S. parent is a <b>transfer pricing exercise first</b>. Expect a
+          cost-plus arrangement with a defensible markup, contemporaneous documentation, and an intercompany services
+          agreement signed before the first invoice. Spanish tax inspectors examine inbound service centers routinely.</p>
+      </div>
+    </div>
+
+    <!-- ---------- TAB 4: REAL ESTATE ---------- -->
+    <div class="panel" id="p-re" role="tabpanel" aria-labelledby="tab-re">
+      <h3>Renting commercial space: how Spanish leases actually work</h3>
+      <p>Non-residential leases are <span class="es">arrendamientos para uso distinto de vivienda</span> under the Urban
+        Leases Act. Unlike residential tenancies, they are governed almost entirely by <span class="k">freedom of
+        contract</span> — there is no statutory minimum term and very few protections implied in your favour. What the
+        lease says is what you get, which cuts both ways.</p>
+
+      <div class="grid2">
+        <div class="card">
+          <h4>Term and break rights</h4>
+          <p>Typical structure is 5 or 10 years with an <span class="es">obligado cumplimiento</span> — a mandatory
+            minimum period, often 1 to 3 years, during which you cannot walk without paying out the balance. Negotiate
+            the break option and its penalty formula explicitly; silence favours the landlord.</p>
+        </div>
+        <div class="card">
+          <h4>Rent, VAT and withholding</h4>
+          <p>Rent is quoted in <span class="k">€/m² per month</span>. Add <span class="k">21% IVA</span>. Separately, a
+            business tenant must generally <span class="k">withhold 19%</span> of the rent and remit it to the tax
+            agency (Forms 115/180) — you pay the landlord 81% plus VAT, not 100%. Landlords know this; new foreign
+            tenants often do not, and pay twice.</p>
+        </div>
+        <div class="card">
+          <h4>Deposits and guarantees</h4>
+          <p>A legal deposit of <span class="k">two months' rent</span> is mandatory and must be lodged with the
+            regional housing authority. On top, landlords will ask a newly formed foreign-owned company for a
+            <span class="k">bank guarantee (<em>aval bancario</em>) of 6 to 12 months' rent</span>, or a U.S.
+            parent-company guarantee. Bank avals are cash-collateralized in practice — budget the working capital.</p>
+        </div>
+        <div class="card">
+          <h4>Indexation and outgoings</h4>
+          <p>Annual rent review is normally tied to CPI (<em>IPC</em>) or a negotiated index. Confirm who bears
+            <em>IBI</em> property tax, community charges, insurance and structural repairs — Spanish leases commonly
+            push all of these to the tenant, but only if the contract says so.</p>
+        </div>
+      </div>
+
+      <h3>Due diligence before you sign or buy</h3>
+      <ul class="tight">
+        <li><span class="k">Nota simple</span> from the Land Registry: confirms ownership, mortgages, easements and
+          embargoes. Non-negotiable, costs almost nothing, and is the first thing any Spanish lawyer pulls.</li>
+        <li><span class="k">Cédula urbanística</span> from the municipality: confirms the zoning actually permits your
+          intended use. A building being "industrial" in the listing is not the same as the plot being zoned for your
+          specific activity.</li>
+        <li><span class="k">Licence transferability</span>: check whether the existing activity licence covers what you
+          will do and whether it transfers, or whether you restart the permitting clock.</li>
+        <li>First occupancy licence, energy performance certificate, technical building inspection where required.</li>
+        <li>Outstanding community charges and IBI — these attach to the property, and you can inherit them.</li>
+      </ul>
+
+      <div class="tip">
+        <b>Land and offer, brokerage practice.</b> Commercial agency is less regulated than in the U.S. and the same
+        broker may quietly represent both sides. Appoint your own tenant representative, insist on a written fee basis,
+        and expect an initial reservation document (<em>documento de reserva</em>) with a deposit before heads of terms.
+        Under a <em>contrato de arras penitenciales</em>, a buyer who walks forfeits the deposit and a seller who walks
+        repays double — real money, not a formality.
+      </div>
+
+      <div class="cond" data-when="office">
+        <span class="tag">Because you chose: Office</span>
+        <p>Office stock is graded A/B/C and clusters sharply: in Madrid, Paseo de la Castellana and the CBD command the
+          top rents with far cheaper space in the A-1 and Méndez Álvaro corridors; in Barcelona, the 22@ district in
+          Poblenou is the tech and creative cluster. Prime rents run roughly <b>€30–45/m²/month in Madrid's CBD and
+          €25–32 in central Barcelona</b>, with secondary cities materially lower — treat these as order-of-magnitude
+          and verify current quotes, as the market moves.</p>
+        <p><b>Start in serviced or coworking space.</b> Regus/IWG, WeWork, Utopicus and Cloudworks all let you take a
+          registered business address and desks on a monthly contract with no aval, no deposit, no activity licence and
+          no fit-out. It converts a 6-month property project into a same-week decision, and buys you time to learn the
+          market before committing to a 5-year lease.</p>
+      </div>
+      <div class="cond" data-when="small">
+        <span class="tag">Because you chose: A small team</span>
+        <p>At under ten people, signing a conventional lease is almost always the wrong call. A flexible workspace
+          contract avoids the bank guarantee entirely — which for a newly incorporated foreign-owned entity with no
+          Spanish credit history is otherwise the hardest term to negotiate.</p>
+      </div>
+      <div class="cond" data-when="plant">
+        <span class="tag">Because you chose: Plant</span>
+        <p>Industrial space means a <em>nave industrial</em> in a <em>polígono industrial</em> (industrial estate). Key
+          moves:</p>
+        <ul class="tight">
+          <li><b>Buy versus lease:</b> leasing is faster and preserves capital; buying is common for heavy process
+            plants and unlocks certain regional capital grants tied to fixed asset investment.</li>
+          <li><b>Verify utility capacity in writing before signing</b> — electrical connection capacity in kW, gas,
+            water supply and permitted discharge volumes. A site that cannot get the power you need is worthless at any
+            rent, and grid connection queues in popular industrial zones are the most common cause of slipped
+            production dates.</li>
+          <li>Check clear height, floor load rating, dock doors, yard depth and turning circles against your equipment
+            spec, not against the listing photos.</li>
+          <li><b>Commission a soil report.</b> Under RD 9/2005, potentially contaminating activities carry soil status
+            obligations, and liability for historic contamination can follow the site. A baseline study protects you on
+            the way in and on the way out.</li>
+          <li>Publicly developed industrial land (through regional land agencies such as SEPES) is often cheaper and
+            comes pre-permitted for industrial use.</li>
+        </ul>
+      </div>
+      <div class="cond" data-when="logistics">
+        <span class="tag">Because you chose: Warehouse / distribution</span>
+        <p>Prime logistics clusters are the <b>Madrid A-2 / Corredor del Henares</b> ring, the <b>Zona Franca and
+          Penedès</b> areas around Barcelona, and the <b>Valencia port hinterland</b>. Prime rents are roughly
+          <b>€6–8/m²/month</b>, with Madrid and Barcelona at the top. Vacancy in the best submarkets is low, so
+          pre-lets and build-to-suit are normal rather than exotic.</p>
+      </div>
+      <div class="cond" data-when="med plant">
+        <span class="tag">Because you chose: Mediterranean corridor</span>
+        <p>Catalonia, Valencia and Murcia give you Spain's densest industrial base, the <b>Port of Valencia</b> (the
+          largest container port in the Mediterranean by throughput) and the <b>Port of Barcelona</b>, plus the best
+          road links to France. Two counterweights: Catalonia's property transfer taxes sit at the high end of the
+          national range, and the eastern seaboard carries real <b>flood and water-scarcity risk</b> — the October 2024
+          Valencia floods hit industrial estates directly. Get a flood-zone check on any shortlisted site.</p>
+      </div>
+      <div class="cond" data-when="centre">
+        <span class="tag">Because you chose: Madrid / central Spain</span>
+        <p>Madrid is the radial centre of the road and high-speed rail network, which makes it the natural national
+          distribution point and the easiest place to reach every other city in a day. It is also the most expensive
+          labour and property market in Spain, and it is landlocked — every import arrives by road from a coastal port.
+          Castilla-La Mancha and Castilla y León offer much cheaper land within trucking distance of the capital.</p>
+      </div>
+      <div class="cond" data-when="north plant">
+        <span class="tag">Because you chose: Northern Spain</span>
+        <p>The north — Basque Country, Navarre, Aragón, Galicia — is Spain's advanced manufacturing heartland, with deep
+          automotive, machine tool, steel and aerospace supply chains and a genuinely skilled industrial workforce. You
+          pay for it in higher wages and tighter labour availability than the south, and the terrain makes internal
+          logistics slower than a map suggests.</p>
+      </div>
+    </div>
+
+    <!-- ---------- TAB 5: MONEY ---------- -->
+    <div class="panel" id="p-money" role="tabpanel" aria-labelledby="tab-money">
+      <h3>Currency</h3>
+      <ul class="tight">
+        <li>Spain uses the <span class="k">euro</span>. There are <span class="k">no exchange controls</span> — capital
+          moves freely into and out of Spain and across the EU. What exists is reporting, not permission.</li>
+        <li><span class="k">Translation and transaction exposure are real.</span> EUR/USD has moved through wide ranges
+          in recent years; a Spanish subsidiary's euro earnings translate into consolidated dollar results at rates you
+          do not control. Set a hedging policy before revenue starts, not after the first bad quarter.</li>
+        <li><span class="k">Natural hedging first.</span> Matching euro revenue against euro costs — local payroll,
+          local suppliers, euro-denominated debt — removes more exposure more cheaply than any forward contract. A plant
+          that sells into Europe is naturally hedged; a plant that exports to the U.S. is not.</li>
+        <li>For residual exposure, forwards and options through your Spanish or U.S. bank are standard. Intercompany
+          funding should be documented at arm's-length rates to survive transfer pricing review on both sides.</li>
+      </ul>
+
+      <h3>Reporting obligations that surprise people</h3>
+      <ul class="tight">
+        <li><span class="k">Bank of Spain ETE return</span>: a Spanish-resident entity with foreign assets or
+          liabilities above €1M must report them annually; higher balances trigger quarterly or monthly filing. Your
+          intercompany loan from the U.S. parent counts.</li>
+        <li><span class="k">Form D-1A</span>: declare the inbound foreign investment to the Investment Registry within
+          one month.</li>
+        <li><span class="k">Cash limits.</span> Payments of €1,000 or more between businesses or professionals
+          <b>cannot legally be made in cash</b> (€10,000 for non-resident individuals). Cross-border movements of
+          €10,000+ must be declared. Spain is serious about this and the penalties are percentage-based.</li>
+      </ul>
+
+      <h3>How money actually moves</h3>
+      <ul class="tight">
+        <li><span class="k">SEPA transfers and IBANs</span>, not checks. Paper checks are effectively extinct in
+          Spanish business; instant SEPA credit transfers settle in seconds.</li>
+        <li><span class="k">Direct debit — <em>domiciliación bancaria</em> — is the default</span> for recurring
+          payments: utilities, rent, social security, taxes. The tax agency and Social Security expect to pull from your
+          account on schedule. Get the mandates set up early; a failed direct debit on a tax payment produces a
+          surcharge automatically.</li>
+        <li><span class="k">Bizum</span> is a bank-consortium instant payment system tied to mobile numbers, used by a
+          large share of the adult population and increasingly by merchants. If you sell to consumers, it belongs in
+          your checkout alongside cards.</li>
+        <li>Card penetration is high and contactless is universal. Cash persists in small hospitality and rural retail
+          but is declining fast.</li>
+        <li><span class="k">A Spanish IBAN is practically necessary.</span> SEPA rules prohibit IBAN discrimination, but
+          in day-to-day reality the tax agency, Social Security and many counterparties are far smoother with a domestic
+          account. Do not try to run a Spanish entity from a U.S. bank account.</li>
+      </ul>
+
+      <h3>Payment terms and the collection problem</h3>
+      <div class="flag">
+        <b>This is the single most underestimated operating difference.</b> Spanish law caps B2B payment terms at
+        <b>60 days</b> from delivery (30 days absent agreement, 30 days for the public sector). Actual behaviour is
+        looser: late payment is common, culturally tolerated, and enforcement has historically been weak because
+        suppliers are reluctant to sue customers they want to keep. A U.S. firm modelling 30-day DSO will find its
+        Spanish working capital requirement is <b>materially higher than planned</b>. Build the real collection cycle
+        into your cash forecast, run credit checks (Informa, Axesor, Iberinform) on new customers, and consider credit
+        insurance — Spain has a deep and competitively priced market for it.
+      </div>
+
+      <h3>Invoicing and e-invoicing</h3>
+      <ul class="tight">
+        <li>Invoices to public bodies must already go electronically through the <span class="k">FACe</span> platform.</li>
+        <li><span class="k">Mandatory B2B e-invoicing is coming</span> under the <em>Crea y Crece</em> law, phased by
+          company size once the implementing regulation is finalized.</li>
+        <li>Separately, the <span class="k">anti-fraud invoicing software rules (Verifactu)</span> require billing
+          systems to be certified, tamper-evident and, in the Verifactu mode, to transmit records to the tax agency.
+          <b>If you are choosing or configuring an ERP for Spain, check compliance before you buy</b> — retrofitting a
+          U.S. billing system is far more expensive than selecting a compliant one.</li>
+      </ul>
+
+      <h3>Local transactions and commercial practice</h3>
+      <ul class="tight">
+        <li><span class="k">Notaries are the gatekeepers of significant transactions.</span> Property, corporate acts
+          and powers of attorney all pass through them. This front-loads cost and time but makes the resulting title and
+          corporate record exceptionally reliable — the flip side of the formalism is that you rarely litigate about
+          what was actually agreed.</li>
+        <li><span class="k">Contracts are shorter, and the Civil and Commercial Codes fill the gaps.</span> A U.S.-style
+          120-page agreement signals distrust. Much of what U.S. counsel drafts explicitly is already implied by statute
+          — and some of what U.S. counsel drafts is unenforceable here, notably broad waivers of statutory protections
+          and at-will termination language.</li>
+        <li><span class="k">Public procurement is a distinct discipline</span> with formal tendering, classification
+          requirements for larger contracts, and heavy use of UTE consortia. Do not treat it as an extension of
+          commercial selling.</li>
+        <li><span class="k">Consumer protection is strict:</span> two-year legal conformity guarantee on goods, 14-day
+          withdrawal on distance sales, and aggressive enforcement of unfair contract terms.</li>
+        <li><span class="k">Relationship precedes transaction.</span> Deals close after a meal more often than after a
+          deck. See the operating-culture section below — this is not a soft point, it is a sales cycle length
+          assumption.</li>
+      </ul>
+
+      <div class="cond" data-when="plant">
+        <span class="tag">Because you chose: Plant</span>
+        <p>Supplier payment terms in Spanish industrial supply chains often stretch beyond the legal cap in practice,
+          and you will be on both sides of it. Two levers: <b>confirming</b> (reverse factoring, extremely common in
+          Spain and offered by every major bank) lets your suppliers get paid early against your credit; and factoring
+          your own receivables converts the long collection cycle into working capital. Also note <b>energy price
+          volatility</b> — industrial electricity costs swing hard, and PPAs or on-site solar self-consumption are now
+          mainstream ways to fix that input.</p>
+      </div>
+      <div class="cond" data-when="office">
+        <span class="tag">Because you chose: Office</span>
+        <p>Your currency exposure is mostly a <b>cost-base</b> exposure: euro salaries and euro rent funded from dollar
+          revenue. That is a translation problem, not a transaction problem, and it is usually managed at the treasury
+          level with a rolling hedge on forecast euro outflows rather than deal by deal.</p>
+      </div>
+      <div class="cond" data-when="sales">
+        <span class="tag">Because you chose: Sales &amp; commercial</span>
+        <p>Decide early whether you invoice customers <b>in euros from the Spanish entity or in dollars from the U.S.
+          parent</b>. Euro invoicing wins deals — it moves the FX risk off the customer — but puts it on you, and it has
+          VAT, transfer pricing and permanent establishment consequences. Model all three before your first quote goes
+          out, because changing it later is a customer-facing conversation.</p>
+      </div>
+      <div class="cond" data-when="50plus">
+        <span class="tag">Because you chose: 50 or more people</span>
+        <p>At this headcount your monthly euro payroll is a predictable, material outflow and is worth hedging
+          systematically — a rolling layered forward program on 6 to 12 months of forecast payroll is the standard
+          approach, and it removes most of the volatility from your Spanish cost base.</p>
+      </div>
+    </div>
+
+    <!-- ---------- TAB 6: PEOPLE ---------- -->
+    <div class="panel" id="p-people" role="tabpanel" aria-labelledby="tab-people">
+      <h3>Employment law: the biggest gap from U.S. practice</h3>
+      <div class="flag">
+        <b>There is no at-will employment in Spain.</b> Every dismissal needs a legally recognized cause, delivered in
+        writing with specified facts and dates. If a court finds the dismissal unfair, statutory compensation is
+        <b>33 days' pay per year of service, capped at 24 months</b> (higher accrual for service before 2012). A
+        dismissal for objective economic or organizational reasons carries 20 days per year, capped at 12 months. This
+        is the number that most often breaks a U.S. headcount model: <b>exits are expensive, contractual and slow.</b>
+        Hire more carefully and use probation periods deliberately.
+      </div>
+
+      <ul class="tight">
+        <li><span class="k">Collective bargaining agreements bind you whether or not you sign them.</span> Sectoral and
+          provincial <em>convenios colectivos</em> set minimum pay scales, job classifications, working hours, overtime
+          rules and leave for your industry in your province. You cannot contract below them. Identify the applicable
+          <em>convenio</em> before you build a compensation model — this is step one of Spanish workforce planning, and
+          U.S. firms routinely discover it in month three.</li>
+        <li><span class="k">Permanent contracts are the default.</span> The 2021 labour reform sharply restricted
+          fixed-term contracts to genuine production surges and substitutions; misuse converts the employee to
+          permanent status and draws fines.</li>
+        <li><span class="k">Probation periods:</span> up to 6 months for qualified technical staff, 2 months otherwise
+          (3 in companies under 25 employees). Use them — after that, the 33-day clock is running.</li>
+        <li><span class="k">Working time:</span> 40 hours per week averaged annually, 12 hours' minimum rest between
+          shifts, overtime capped at 80 hours a year. <b>Daily time registration is mandatory for every employee</b> and
+          records are retained four years. A statutory reduction of the working week to 37.5 hours has been debated and
+          may return — track it.</li>
+        <li><span class="k">A minimum of 30 calendar days of paid holiday</span> per year, plus 14 public holidays
+          (national, regional and two local). August is functionally a closed month across much of Spanish business.</li>
+        <li><span class="k">Employee representation:</span> personnel delegates from 6 employees, a full works council
+          (<em>comité de empresa</em>) at 50, with information and consultation rights over restructuring, working time
+          and significant organizational change.</li>
+        <li><span class="k">Remote work</span> above 30% of working time over a three-month reference period requires a
+          written agreement, and the employer must provide equipment and cover the associated costs.</li>
+        <li>Generous statutory leave: 16+ weeks of fully paid birth and childcare leave for each parent, paid at 100%
+          by Social Security rather than by you.</li>
+      </ul>
+
+      <h3>Moving U.S. staff to Spain</h3>
+      <ul class="tight">
+        <li><span class="k">Highly Qualified Professional</span> permit under the Entrepreneurs' Law, processed by a
+          dedicated large-company unit with fast statutory decision windows — the standard route for transferring
+          senior staff.</li>
+        <li><span class="k">Intra-Company Transfer (ICT)</span> permit for moving existing employees within the group.</li>
+        <li><span class="k">Digital nomad / international teleworker</span> visa for staff who will remain employed by
+          the U.S. parent while living in Spain, often paired with the 24% Beckham tax regime.</li>
+        <li>The general work permit route exists but is subject to a labour market test and is markedly slower.</li>
+        <li><span class="k">The real-estate "golden visa" was abolished in 2025</span> — if an adviser still pitches it,
+          their information is out of date.</li>
+        <li>Short business trips run on the Schengen 90-in-180 rule, now administered through the EU's biometric
+          Entry/Exit System. Track cumulative days for frequent travellers; the system now counts them automatically and
+          overstays are enforced.</li>
+      </ul>
+
+      <h3>Working rhythm and business culture</h3>
+      <ul class="tight">
+        <li><span class="k">The day is shifted later, not longer.</span> Meetings commonly start at 9:30–10:00; lunch is
+          the main meal, taken from roughly 14:00; dinner from 21:00. A 12:00 lunch invitation reads as strange, and an
+          8:00 a.m. call reads as inconsiderate.</li>
+        <li><span class="k">Lunch is a business institution</span>, not a break to be optimized. A two-hour lunch with a
+          counterpart is doing the deal, not delaying it.</li>
+        <li><span class="k">Relationships precede contracts.</span> Expect a longer front end to the sales cycle and
+          more in-person time than the equivalent U.S. deal. The time is recovered later in loyalty and dispute
+          avoidance.</li>
+        <li><span class="k">Hierarchy is real but communication is warm.</span> Decisions concentrate at the top;
+          interruption and animated disagreement in meetings signal engagement rather than conflict.</li>
+        <li><span class="k">Language.</span> Spanish is universal in business, English is common among younger
+          professionals in Madrid and Barcelona and thinner elsewhere. Catalan, Basque and Galician are co-official in
+          their territories and carry genuine political and commercial weight — in Catalonia, consumer-facing labelling
+          and signage obligations in Catalan are enforced. Localize by region, not by country.</li>
+        <li><span class="k">Regional identity is not decorative.</span> Treating Spain as one homogeneous market is the
+          most common strategic error U.S. firms make here.</li>
+      </ul>
+
+      <div class="cond" data-when="plant">
+        <span class="tag">Because you chose: Plant</span>
+        <p>Industrial sites are where Spanish labour relations are most institutionalized. Expect a strong sectoral
+          <em>convenio</em> (the provincial metal industry agreements are the archetype), active union presence — CCOO
+          and UGT are the two majors — and a works council that will be consulted on shift patterns, safety and
+          restructuring. This is manageable and predictable once you accept it as the operating model. <b>Engage the
+          works council early and genuinely</b>; U.S. plants that treat consultation as a formality generate the
+          disputes they were trying to avoid. Occupational risk prevention (<em>PRL</em>) obligations are also
+          substantially heavier on an industrial site, with a mandatory prevention service, documented risk assessments
+          and health surveillance.</p>
+      </div>
+      <div class="cond" data-when="office">
+        <span class="tag">Because you chose: Office</span>
+        <p>Office roles typically fall under an <em>oficinas y despachos</em> or sector-specific <em>convenio</em>, which
+          is lighter than industrial agreements but still sets minimum terms. Hybrid work is widely expected in Madrid
+          and Barcelona professional roles — and remember that formalizing it above the 30% threshold triggers a written
+          remote work agreement and an expense allowance.</p>
+      </div>
+      <div class="cond" data-when="rnd">
+        <span class="tag">Because you chose: R&amp;D / engineering</span>
+        <p>Spain's engineering talent is strong and comparatively inexpensive against U.S. benchmarks, which is much of
+          the business case. The constraint is not supply but <b>retention</b>: Madrid and Barcelona now host many
+          international tech centres competing for the same people, and Spanish employees weigh schedule, holiday and
+          stability heavily against pure cash. An offer that wins in Austin may lose in Barcelona for reasons that have
+          nothing to do with base salary.</p>
+      </div>
+      <div class="cond" data-when="shared">
+        <span class="tag">Because you chose: Shared services / back office</span>
+        <p>Spain is a well-established nearshore location for multilingual shared services — the pool of staff with
+          Spanish, English, French, Portuguese, German and Italian is deep and Málaga, Barcelona and Madrid all host
+          large captive centres. Two planning points: <b>the time zone overlaps Europe fully but the U.S. only
+          partially</b>, which is precisely the constraint discussed in the culture section below; and
+          <b>attrition-driven staffing models built on at-will hiring do not transfer</b> — a shared services centre
+          sized on the assumption of easy exits will be expensive in Spain.</p>
+      </div>
+      <div class="cond" data-when="50plus">
+        <span class="tag">Because you chose: 50 or more people</span>
+        <p>Crossing 50 employees triggers a cluster of obligations at once: works council elections, a registered
+          <b>equality plan</b> negotiated with employee representatives, a pay register and pay audit, an
+          <b>LGTBI protocol</b>, and an internal <b>whistleblowing channel</b>. Each has its own deadline and its own
+          penalty for absence. Put all of them on the plan before you cross the threshold, not after.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= CULTURE QUOTES ============================= -->
+<section id="culture">
+  <div class="wrap">
+    <p class="eyebrow">Operating reality</p>
+    <h2>What U.S. firms <span class="blue">get wrong</span> about working in Spain</h2>
+    <p class="lede">The legal and tax structure is the easy half. These are the differences that determine whether a
+      Spanish operation actually functions inside a U.S. management system — drawn from published reporting on Spanish
+      working life.</p>
+
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th style="width:42%">Quote</th><th>Business Implication</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="quote">
+              <q>In Spain, we have long working hours, sometimes from nine to nine, and we waste two to three hours for
+              lunch</q>
+              <span class="src">Source: <a href="https://www.bbc.com/worklife/article/20191213-should-spain-replace-the-siesta-with-flexible-work" target="_blank" rel="noopener">BBC Worklife — Should Spain replace the siesta with flexible work?</a></span>
+            </td>
+            <td>U.S. firms should adjust meeting windows and response-time expectations when working with Spanish teams.
+              A U.S. headquarters may otherwise misinterpret slower midday responsiveness as low urgency rather than a
+              schedule mismatch, but should take advantage of synchronous conversation from Spain's culture of later
+              working hours — <span class="k">9 p.m. in Spain is 11 a.m. in Cupertino</span>.</td>
+          </tr>
+          <tr>
+            <td class="quote">
+              <q>Spaniards say they are working harder these days and sleeping less, feeling at once more prosperous and
+              fatigued … [this has] reduced regular siesta-takers to 24% of the population.</q>
+              <span class="src">Source: <a href="https://www.latimes.com/archives/la-xpm-2000-mar-28-mn-13518-story.html" target="_blank" rel="noopener">Los Angeles Times archive (2000)</a></span>
+            </td>
+            <td>The midday siesta is disappearing, but along with it, Spanish sentiment of prosperity. This could cause
+              feelings of resentment from those working with U.S. firms, but will likely dissipate as newer generations
+              come into the workforce and don't have this baked so much into their identity.</td>
+          </tr>
+          <tr>
+            <td class="quote">
+              <q>In Spain, employees get at least 30 days of paid time off a year. In the US, workers aren't guaranteed
+              PTO…</q>
+              <span class="src">Source: <a href="https://www.businessinsider.com/surprising-things-working-in-corporate-spain-vs-us-2025-5" target="_blank" rel="noopener">Business Insider — Surprising things about working in corporate Spain vs. the US</a></span>
+            </td>
+            <td>Paid leave is a statutory floor, not a competitive benefit, so a U.S. PTO package offers no recruiting
+              advantage in Spain and a below-30-day policy is simply unlawful. Capacity planning has to absorb a
+              genuinely quiet August and 14 public holidays that vary by region and city, which means U.S. delivery
+              commitments and coverage models must be built around a smaller effective working year rather than treating
+              absence as an exception.</td>
+          </tr>
+          <tr>
+            <td class="quote">
+              <q>While working in Spain, it was common to regularly grab lunch with colleagues or my boss and enjoy a
+              full one-hour break… In the US, lunch breaks feel shorter and like they should be optimized.</q>
+              <span class="src">Source: <a href="https://www.businessinsider.com/surprising-things-working-in-corporate-spain-vs-us-2025-5" target="_blank" rel="noopener">Business Insider — Surprising things about working in corporate Spain vs. the US</a></span>
+            </td>
+            <td>To bridge Economic Distance expectations, U.S. leadership must realize that Spanish partners prioritize
+              long-term relational value over immediate transactional efficiency. Firm leaders should invest heavily in
+              social trust formation to optimize productivity.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= CAGE ============================= -->
+<section id="cage">
+  <div class="wrap">
+    <p class="eyebrow">Ghemawat Framework</p>
+    <h2><span class="blue">CAGE:</span> Analyzing Distance</h2>
+    <p class="lede">Cultural, Administrative, Geographic and Economic distance between Spain and the United States.
+      Spain is closer than most U.S. firms assume on geography and further than they assume on administration and
+      culture — and it is never one uniform market.</p>
+
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:15%">CAGE Distance</th>
+            <th style="width:55%">Key Spain vs. U.S. differences</th>
+            <th>Business Implication</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rowhead">Cultural Distance</td>
+            <td>
+              <ul>
+                <li><span class="k">Languages:</span> Spanish, Catalan, Basque, Galician, Valencian and Aranese, plus
+                  many regional dialects. The U.S. is English-dominant but highly diverse through immigration.</li>
+                <li><span class="k">Collectivism vs. individualism:</span> Spain tends to be more relationship-based;
+                  the U.S. more individualistic, speed-oriented and direct.</li>
+                <li><span class="k">Daily rhythm:</span> later meals and some siesta-style afternoon breaks; the U.S.
+                  business rhythm is faster and more compressed.</li>
+                <li><span class="k">History and identity:</span> deeper Roman, Catholic, regional and Mediterranean
+                  roots. The U.S. turns 250 in 2026, with immigration shaping a younger culture.</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li>Regional localization matters.</li>
+                <li>Trust-building may matter more than speed.</li>
+                <li>Marketing, hiring, signage, service and relationships may need to vary by region.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="rowhead">Administrative Distance</td>
+            <td>
+              <ul>
+                <li><span class="k">Political system:</span> Spain is a constitutional monarchy and parliamentary
+                  democracy; the U.S. is a federal republic.</li>
+                <li><span class="k">Regional structure:</span> no states — <span class="k">17 Autonomous Communities,
+                  2 Autonomous Cities, 50 provinces and 8,000+ municipalities</span>, against 50 states, D.C. and
+                  territories.</li>
+                <li><span class="k">EU / euro layer:</span> Spain is in the European Union and uses the euro; the U.S.
+                  uses the dollar and sits outside the EU system.</li>
+                <li><span class="k">Regional variation:</span> the Basque Country and Navarre hold unique fiscal powers.
+                  U.S. states also vary in taxes, labor rules, incentives and regulation.</li>
+                <li><span class="k">Corruption perception (CPI):</span> Spain 55/100, rank 49/182; the U.S. 64/100, rank
+                  29/182.</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li>Spain is smaller, but not uniform.</li>
+                <li>Rules operate at national, EU, regional and local levels.</li>
+                <li>Region choice affects permits, taxes, incentives, public-sector relationships and timelines.</li>
+                <li>Due diligence matters, given slightly higher perceived public-sector corruption risk.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="rowhead">Geographic Distance</td>
+            <td>
+              <ul>
+                <li><span class="k">Scale, movement and connectivity:</span> Spain is about the size of California at
+                  roughly <span class="k">505,370 km²</span>, with <span class="k">Europe's largest high-speed rail
+                  network</span> — second globally after China — at roughly 3,973 km. The U.S. is about
+                  <span class="k">9.8 million km², over 19× larger</span>, and relies far more on highways, domestic
+                  flights, freight rail and regional hubs.</li>
+                <li><span class="k">Terrain and mountains:</span> Spain is one of Europe's most mountainous countries,
+                  second only to Switzerland, with the <em>Meseta Central</em> plateau shaping the interior. The U.S.
+                  has the Great Plains, the Appalachians in the east, and the Rockies and Sierra Nevada in the west.</li>
+                <li><span class="k">Mainland, islands and territories:</span> Spain also includes the Balearic Islands,
+                  Canary Islands, Ceuta and Melilla. The U.S. has a large contiguous mainland plus Alaska, Hawaii and
+                  its territories.</li>
+                <li><span class="k">Climate and water risk:</span> drought and flooding on the Mediterranean seaboard
+                  are live operational risks, as the October 2024 Valencia floods showed.</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li>Shorter distances and rail coverage make national reach and coordination easier after entry than
+                  the U.S. equivalent.</li>
+                <li>Terrain still constrains logistics — map distance overstates real reach.</li>
+                <li>"Smaller" does not mean one simple market: islands and territories add logistics, tax-frontier and
+                  regional planning needs.</li>
+                <li>Site selection should include flood-zone and water-availability checks.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="rowhead">Economic Distance</td>
+            <td>
+              <ul>
+                <li><span class="k">Economic scale:</span> Spain $1.89T GDP / $38,040 per capita; U.S. $29.18T GDP /
+                  $85,810 per capita in 2025.</li>
+                <li><span class="k">Economic drivers:</span> Spain leans on services and tourism, creating seasonality
+                  risk; the U.S. is driven by consumer spending, technology, innovation, finance and large regional
+                  clusters.</li>
+                <li><span class="k">Valencia example:</span> tourism is over 15.5% of regional GDP, manufacturing 19%,
+                  and agri-food created nearly 50,000 jobs in 2023.</li>
+                <li><span class="k">Income and safety net:</span> lower average income and wages but stronger public
+                  benefits, including universal healthcare and public pensions. The U.S. has higher purchasing power but
+                  higher wealth inequality.</li>
+                <li><span class="k">Labor market:</span> Spanish unemployment around 10.5%, youth unemployment around
+                  23%. The U.S. labor market is more fluid, with faster hiring and firing cycles.</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li>The U.S. offers more scale and purchasing power.</li>
+                <li>Spain requires pricing and demand adaptation by income, region and seasonality.</li>
+                <li>Hiring strategy needs local fit around labor protections, youth unemployment and regional talent.</li>
+                <li>Spain remains attractive through lower labor costs, regional clusters and EU market access.</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= THANK YOU ============================= -->
+<section id="thanks" class="thanks">
+  <div class="wrap">
+    <p class="eyebrow">Gracias</p>
+    <blockquote>On behalf of Team D, thank you to <span class="blue">Professor Brock</span> for creating an amazing
+      experience for us in Valencia!</blockquote>
+    <figure>
+      <img src="images/team-valencia.jpg"
+           alt="Santa Clara University Leavey School of Business group photo at Power Electronics in Valencia, Spain">
+      <figcaption>Santa Clara University · Leavey School of Business · Power Electronics, Valencia</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================= FOOTER ============================= -->
+<footer>
+  <div class="wrap">
+    <div class="disclaim">
+      <b>Disclaimer for Professor Brock and anyone who may be viewing.</b> Nothing here is legal, tax or investment advice!
+       This is prepared by Team D, for our M4: Site Visit assignment.
+       We used various tools, including AI tools such as Gemini and Claude for research and data compilation purposes.
+       We hope you enjoy!
+    </div>
+
+    <p style="margin-top:26px"><button class="btn" type="button" onclick="window.print()">Print / save as PDF</button>
+      &nbsp; <a href="#start">Back to top ↑</a></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---------------- flow definition ---------------- */
+  var FIRST = {
+    key: 'track',
+    q: 'Are you opening a plant or an office?',
+    hint: 'Pick the closer match. You can change it at any time.',
+    options: [
+      { v: 'plant',  num: 'Option 1', label: 'A plant',  sub: 'Manufacturing, processing, assembly, or a distribution and warehousing facility' },
+      { v: 'office', num: 'Option 2', label: 'An office', sub: 'Sales, a subsidiary headquarters, R&D and engineering, or shared services' }
+    ]
+  };
+
+  var STEPS = {
+    plant: [
+      { key: 'kind', q: 'What kind of facility?', hint: 'This drives your permitting burden more than anything else.',
+        options: [
+          { v: 'manufacturing', label: 'Manufacturing / assembly', sub: 'Discrete production, machining, electronics, automotive supply' },
+          { v: 'process',       label: 'Food, agri or chemical processing', sub: 'Continuous process, sanitary or chemical regulation' },
+          { v: 'logistics',     label: 'Warehouse / distribution', sub: 'Storage, fulfilment, cross-dock, light value-added' }
+        ] },
+      { key: 'region', q: 'Where are you looking?', hint: 'Region determines your tax authority, incentives and permitting timeline.',
+        options: [
+          { v: 'med',    label: 'Mediterranean corridor', sub: 'Catalonia, Valencia, Murcia' },
+          { v: 'foral',  label: 'Basque Country / Navarre', sub: 'Separate tax regime' },
+          { v: 'centre', label: 'Madrid &amp; central Spain', sub: 'Madrid, Castilla-La Mancha, Castilla y León' },
+          { v: 'south',  label: 'Andalusia / Extremadura', sub: 'Assisted areas, higher grant intensity' },
+          { v: 'canary', label: 'Canary Islands', sub: '4% ZEC regime, outside the EU VAT area' }
+        ] },
+      { key: 'size', q: 'Expected headcount in year one?', hint: 'Spanish obligations step up at 6, 50 and 250 employees.',
+        options: [
+          { v: 'small', label: 'Under 50' },
+          { v: 'mid',   label: '50 to 249' },
+          { v: 'large', label: '250 or more' }
+        ] }
+    ],
+    office: [
+      { key: 'kind', q: 'What will the office actually do?', hint: 'Function changes your tax exposure and your hiring model.',
+        options: [
+          { v: 'sales',  label: 'Sales &amp; commercial', sub: 'Serving Spanish or EU customers directly' },
+          { v: 'hq',     label: 'Subsidiary headquarters', sub: 'Regional management and administration for EMEA' },
+          { v: 'rnd',    label: 'R&amp;D / engineering', sub: 'Product development, software, a technical centre' },
+          { v: 'shared', label: 'Shared services / back office', sub: 'Multilingual support, finance, operations' }
+        ] },
+      { key: 'region', q: 'Which location?', hint: 'Cost, talent depth and even the tax authority vary by city.',
+        options: [
+          { v: 'centre', label: 'Madrid', sub: 'Capital, finance, corporate HQs, best national connectivity' },
+          { v: 'med',    label: 'Barcelona', sub: 'Tech and design cluster, the 22@ district, port access' },
+          { v: 'foral',  label: 'Bilbao / San Sebastián / Pamplona', sub: 'Separate tax regime, industrial base' },
+          { v: 'other',  label: 'Valencia, Málaga, Seville, Zaragoza', sub: 'Lower cost, growing talent pools' }
+        ] },
+      { key: 'size', q: 'Expected headcount in year one?', hint: 'Spanish obligations step up at 6, 50 and 250 employees.',
+        options: [
+          { v: 'small', label: 'Under 10' },
+          { v: 'mid',   label: '10 to 49' },
+          { v: 'large', label: '50 or more' }
+        ] }
+    ]
+  };
+
+  var LABELS = {
+    plant: 'Plant', office: 'Office',
+    manufacturing: 'Manufacturing', process: 'Process industry', logistics: 'Logistics',
+    sales: 'Sales', hq: 'Subsidiary HQ', rnd: 'R&D', shared: 'Shared services',
+    med: 'Mediterranean', foral: 'Basque / Navarre', centre: 'Madrid &amp; centre',
+    south: 'Andalusia / Extremadura', canary: 'Canary Islands', other: 'Secondary city',
+    small: 'Small team', mid: 'Mid-sized', large: 'Large'
+  };
+
+  /* ---------------- state ---------------- */
+  var state = {};
+  var order = [];              // keys answered, in order
+  var el = function (id) { return document.getElementById(id); };
+
+  function flags() {
+    var f = {};
+    order.forEach(function (k) { f[state[k]] = true; });
+    if (state.size === 'mid' || state.size === 'large') { f['50plus'] = true; }
+    if (state.size === 'large') { f['250plus'] = true; }
+    if (state.track === 'plant' && state.region === 'foral') { f.north = true; }
+    if (state.track === 'plant' && state.region === 'med') { f.med = true; }
+    return f;
+  }
+
+  /* ---------------- wizard rendering ---------------- */
+  function currentStep() {
+    if (!state.track) { return FIRST; }
+    var chain = STEPS[state.track];
+    for (var i = 0; i < chain.length; i++) {
+      if (!state[chain[i].key]) { return chain[i]; }
+    }
+    return null; // complete
+  }
+
+  function renderProgress() {
+    var chain = state.track ? STEPS[state.track] : [];
+    var items = [{ key: 'track', name: 'Plant or office' }].concat(
+      chain.map(function (s) { return { key: s.key, name: s.q.replace(/\?$/, '') }; })
+    );
+    var step = currentStep();
+    el('progress').innerHTML = items.map(function (it) {
+      var cls = state[it.key] ? 'pip done' : (step && step.key === it.key ? 'pip now' : 'pip');
+      var mark = state[it.key] ? '✓ ' : '';
+      return '<span class="' + cls + '">' + mark + it.name + '</span>';
+    }).join('');
+  }
+
+  function renderStep() {
+    var step = currentStep();
+    renderProgress();
+    el('backBtn').classList.toggle('hide', order.length === 0);
+
+    if (!step) {
+      el('qtext').textContent = 'Your brief is ready.';
+      el('qhint').innerHTML = 'Scroll down: the tabs below are now filtered for your path, and the blue call-outs are the parts written for you.';
+      el('opts').innerHTML = '<button class="opt" type="button" data-scroll="1" style="border-color:var(--accent)">' +
+        '<span class="num">Next</span><span class="lab">Read my brief ↓</span>' +
+        '<span class="sub">Six tabs: legal and entity, documents, tax, real estate, currency, and people.</span></button>';
+      return;
+    }
+
+    el('qtext').innerHTML = step.q;
+    el('qhint').innerHTML = step.hint || '';
+    el('opts').innerHTML = step.options.map(function (o, i) {
+      return '<button class="opt" type="button" data-key="' + step.key + '" data-val="' + o.v + '">' +
+        '<span class="num">' + (o.num || ('Option ' + (i + 1))) + '</span>' +
+        '<span class="lab">' + o.label + '</span>' +
+        (o.sub ? '<span class="sub">' + o.sub + '</span>' : '') +
+        '</button>';
+    }).join('');
+  }
+
+  /* ---------------- brief + conditional content ---------------- */
+  function applyConditions() {
+    var f = flags();
+    var any = order.length > 0;
+    var nodes = document.querySelectorAll('.cond');
+    for (var i = 0; i < nodes.length; i++) {
+      var tokens = (nodes[i].getAttribute('data-when') || '').split(/\s+/).filter(Boolean);
+      var show = !any ? true : tokens.every(function (t) { return !!f[t]; });
+      nodes[i].classList.toggle('hide', !show);
+    }
+  }
+
+  function briefBullets() {
+    var f = flags(), out = [];
+
+    if (f.plant) {
+      out.push('<strong>Entity:</strong> incorporate an <em>S.L.</em> Capital of €3,000+ even though the legal minimum is €1. This is what banks, landlords and industrial suppliers expect to see.');
+      out.push('<strong>Critical path:</strong> environmental and activity permitting plus the grid connection, not incorporation. Plan <strong>12 to 24 months</strong> from site selection to production and open the permitting file before you commit to a site.');
+    } else if (f.office) {
+      out.push('<strong>Entity:</strong> an <em>S.L.</em> subsidiary rather than a branch — it ring-fences parent liability and keeps U.S. parent accounts out of the Spanish public registry.');
+      out.push('<strong>Critical path:</strong> NIE/NIF issuance and corporate bank account opening. Plan <strong>6 to 10 weeks</strong> from apostilled documents in hand to a trading entity.');
+    }
+
+    if (f.process)     { out.push('<strong>Sector permits:</strong> RGSEAA food registration or REACH/Seveso chemical obligations sit on top of the general licences, and wastewater pre-treatment is the classic late surprise.'); }
+    if (f.logistics)   { out.push('<strong>Fast track:</strong> check whether your municipality accepts a <em>declaración responsable</em> instead of a full activity licence — for non-classified warehousing that can save six months.'); }
+    if (f.sales)       { out.push('<strong>Watch permanent establishment:</strong> a Spanish rep who habitually concludes contracts creates a taxable PE for the U.S. parent even with no entity. And Spanish law gives terminated commercial agents a non-waivable goodwill indemnity.'); }
+    if (f.rnd)         { out.push('<strong>Money on the table:</strong> Spain’s R&amp;D credits (25–42%) are cash-refundable if you have no tax to shelter. Get a binding <em>informe motivado</em> and claim from year one.'); }
+    if (f.shared)      { out.push('<strong>Transfer pricing first:</strong> a captive centre charging the U.S. parent needs a documented cost-plus arrangement and an intercompany services agreement before the first invoice.'); }
+    if (f.hq)          { out.push('<strong>Treaty planning:</strong> the U.S.–Spain protocol allows 0% withholding on dividends at 80%+ ownership, and 0% on interest and royalties — but only with a current Form 6166 and a passing limitation-on-benefits test.'); }
+
+    if (f.foral)       { out.push('<strong>Different tax authority:</strong> you will file with the <em>Hacienda Foral</em> under the Basque or Navarrese regime, not the national AEAT. Rates, forms and — importantly — the richer R&amp;D credits all differ. Hire a local adviser.'); }
+    if (f.canary)      { out.push('<strong>ZEC regime:</strong> a 4% corporate tax rate is available against investment and local-hiring commitments, with IGIC at 7% instead of 21% IVA. The cost is a tax frontier with the mainland.'); }
+    if (f.south)       { out.push('<strong>Grant intensity:</strong> Andalusia and Extremadura are assisted areas on the EU regional aid map, so capital grants can be larger than Madrid or Catalonia may legally offer. Talk to the regional agency <em>before</em> starting the project.'); }
+    if (f.med && f.plant) { out.push('<strong>Site risk:</strong> the eastern seaboard carries real flood and water-scarcity exposure — run a flood-zone check on every shortlisted site alongside the usual due diligence.'); }
+    if (f.centre)      { out.push('<strong>Madrid trade-off:</strong> best national connectivity and deepest talent pool, highest wage and property costs, and landlocked — every import arrives by road from a coastal port.'); }
+
+    if (f['250plus'])  { out.push('<strong>Large-employer regime:</strong> works council, binding sectoral collective agreement, equality plan and pay audit, whistleblowing channel, and a formal <em>ERE</em> process for any restructuring. Retain Spanish employment counsel.'); }
+    else if (f['50plus']) { out.push('<strong>The 50-employee cliff:</strong> crossing 50 triggers a works council, a negotiated equality plan, a pay register, an LGTBI protocol and a whistleblowing channel — each with its own deadline. Plan them before you cross, not after.'); }
+    else if (f.small)  { out.push('<strong>Start flexible:</strong> at this size, serviced or coworking space avoids the bank guarantee, the deposit, the activity licence and the fit-out entirely.'); }
+
+    out.push('<strong>Always true:</strong> no at-will employment (unfair dismissal costs 33 days per year of service, capped at 24 months), a sectoral collective agreement sets your minimum terms, salaries run across 14 payments, and employer social security adds roughly 30–32%.');
+    return out;
+  }
+
+  function renderBrief() {
+    if (!order.length) {
+      el('briefTitle').textContent = 'Select a path above, or reference all our data below';
+      el('briefChips').innerHTML = '';
+      el('briefList').innerHTML = '';
+      return;
+    }
+    var parts = order.map(function (k) { return LABELS[state[k]] || state[k]; });
+    el('briefTitle').innerHTML = 'Your brief: ' + parts.join(' · ');
+    el('briefChips').innerHTML = parts.map(function (p) { return '<span class="chip">' + p + '</span>'; }).join('');
+    el('briefList').innerHTML = briefBullets().map(function (b) { return '<li>' + b + '</li>'; }).join('');
+  }
+
+  function refresh() { renderStep(); renderBrief(); applyConditions(); }
+
+  /* ---------------- events ---------------- */
+  el('opts').addEventListener('click', function (e) {
+    var b = e.target.closest('.opt');
+    if (!b) { return; }
+    if (b.getAttribute('data-scroll')) {
+      document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+    var k = b.getAttribute('data-key');
+    state[k] = b.getAttribute('data-val');
+    if (order.indexOf(k) === -1) { order.push(k); }
+    refresh();
+  });
+
+  el('backBtn').addEventListener('click', function () {
+    var last = order.pop();
+    if (!last) { return; }
+    delete state[last];
+    if (last === 'track') { state = {}; order = []; }
+    refresh();
+  });
+
+  el('resetBtn').addEventListener('click', function () {
+    state = {}; order = [];
+    refresh();
+    document.getElementById('start').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  el('skipBtn').addEventListener('click', function () {
+    state = {}; order = [];
+    refresh();
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  /* ---------------- tabs ---------------- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  function selectTab(tab) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.setAttribute('tabindex', on ? '0' : '-1');
+      document.getElementById(t.getAttribute('aria-controls')).classList.toggle('active', on);
+    });
+  }
+  tabs.forEach(function (t, i) {
+    t.setAttribute('tabindex', i === 0 ? '0' : '-1');
+    t.addEventListener('click', function () { selectTab(t); });
+    t.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) { return; }
+      e.preventDefault();
+      var next = tabs[(i + d + tabs.length) % tabs.length];
+      selectTab(next);
+      next.focus();
+    });
+  });
+
+  refresh();
+})();
+</script>
+</body>
+</html>
